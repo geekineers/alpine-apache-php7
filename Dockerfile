@@ -3,15 +3,40 @@ FROM alpine:latest
 MAINTAINER geekineers <developers@8layertech.com>
 
 RUN apk update && apk upgrade && \
-    apk add --no-cache curl openssl && \
-    apk add --no-cache php7 php7-apache2 php7-openssl && \
-    apk add --no-cache php7-fpm php7-mysqli php7-pgsql php7-sqlite3 php7-phar php7-mbstring && \
-    apk add --no-cache php7-apcu php7-intl php7-mcrypt php7-json php7-gd php7-curl && \
-    apk add --no-cache nodejs
+    apk add --no-cache \
+                        curl  \ 
+                        openssl \
+                        wget \
+                        php7 \
+                        php7-bcmath \
+                        php7-apache2 \
+                        php7-openssl \
+                        php7-dom \
+                        php7-pdo_mysql \ 
+                        php7-fpm \
+                        php7-mysqli \
+                        php7-pgsql \
+                        php7-sqlite3 \
+                        php7-phar \
+                        php7-mbstring \
+                        php7-apcu \
+                        php7-intl \
+                        php7-mcrypt \
+                        php7-json \
+                        php7-gd \ 
+                        php7-curl \
+                        php7-xml \
+                        php7-xmlreader \
+                        php7-ctype \
+                        php7-session
 
 RUN ln -s /etc/php7 /etc/php && \
     ln -s /usr/bin/php7 /usr/bin/php && \
     ln -s /usr/lib/php7 /usr/lib/php
+
+RUN wget https://phar.phpunit.de/phpunit-6.0.phar && \
+    chmod +x phpunit-6.0.phar && \
+    mv phpunit-6.0.phar /usr/local/bin/phpunit
 
 RUN cd /tmp && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
