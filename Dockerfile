@@ -17,7 +17,7 @@ RUN cd /tmp && curl -sS https://getcomposer.org/installer | php && mv composer.p
 
 RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/httpd.conf && \
     sed -i 's/AllowOverride none/AllowOverride All/g' /etc/apache2/httpd.conf && \
-    sed -i 's/\/var\/www\/localhost\/htdocs/\/var\/www\/app/g' /etc/apache2/httpd.conf && \
+    sed -i 's/\/var\/www\/localhost\/htdocs/\/var\/www\/app\/public/g' /etc/apache2/httpd.conf && \
     sed -i 's/\#LoadModule rewrite_module/LoadModule rewrite_module/g' /etc/apache2/httpd.conf
 
 COPY httpd-foreground /usr/local/bin/
@@ -27,4 +27,4 @@ RUN mkdir /var/www/localhost/app
 
 EXPOSE 80 443
 
-ENTRYPOINT ["httpd-foreground"]
+ENTRYPOINT ["httpd-foreground && crond"]
