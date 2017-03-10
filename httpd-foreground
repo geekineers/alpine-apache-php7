@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+# In case /run/apache2 is missing
+if [ ! -d /run/apache2 ]; then
+    mkdir /run/apache2
+fi
+
+# Apache gets grumpy about PID files pre-existing
+rm -f /usr/local/apache2/logs/httpd.pid
+
+exec httpd -DFOREGROUND
