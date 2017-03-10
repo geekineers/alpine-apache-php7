@@ -27,4 +27,4 @@ RUN mkdir /var/www/localhost/app
 
 EXPOSE 80 443
 
-ENTRYPOINT ["httpd-foreground && crond"]
+ENTRYPOINT ["httpd-foreground"]
