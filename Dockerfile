@@ -28,7 +28,8 @@ RUN apk update && apk upgrade && \
                         php7-xml \
                         php7-xmlreader \
                         php7-ctype \
-                        php7-session
+                        php7-session \
+                        php7-tokenizer
 
 RUN ln -s /etc/php7 /etc/php && \
     ln -s /usr/lib/php7 /usr/lib/php
