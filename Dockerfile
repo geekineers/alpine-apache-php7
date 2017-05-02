@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:edge
 
 MAINTAINER geekineers <developers@8layertech.com>
 
@@ -31,7 +31,6 @@ RUN apk update && apk upgrade && \
                         php7-session
 
 RUN ln -s /etc/php7 /etc/php && \
-    ln -s /usr/bin/php7 /usr/bin/php && \
     ln -s /usr/lib/php7 /usr/lib/php
 
 RUN wget https://phar.phpunit.de/phpunit-6.0.phar && \
